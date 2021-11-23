@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "483353795622",
+    "project_id": "sharda-university-car-pooling",
+    "storage_bucket": "sharda-university-car-pooling.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:483353795622:android:0e06fe3b2f6e07a6b39ae7",
+        "android_client_info": {
+          "package_name": "com.example.shardapooling"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "483353795622-956bi7j3g0mbm6q6scg0epnmbr8p1old.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrOlQVuiId9IPwo7GGODgOnFyISR678Xw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "483353795622-956bi7j3g0mbm6q6scg0epnmbr8p1old.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:483353795622:android:20ea05059f827eb4b39ae7",
+        "android_client_info": {
+          "package_name": "com.example.shardauniversitycarpooling"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "483353795622-956bi7j3g0mbm6q6scg0epnmbr8p1old.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrOlQVuiId9IPwo7GGODgOnFyISR678Xw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "483353795622-956bi7j3g0mbm6q6scg0epnmbr8p1old.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
