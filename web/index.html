@@ -33,7 +33,21 @@
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
-  <script>
+  <script type = "module">
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
+
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-analytics.js";
+
+    const firebaseConfig = {
+    apiKey: "AIzaSyBoclOnT04w8LzzcOF2T1qolhvGaSjJ4ZU",
+    authDomain: "sharda-university-car-pooling.firebaseapp.com",
+    projectId: "sharda-university-car-pooling",
+    storageBucket: "sharda-university-car-pooling.appspot.com",
+    messagingSenderId: "483353795622",
+    appId: "1:483353795622:web:425936eccf8d145cb39ae7",
+    measurementId: "G-Q7JKC0FSTP"
+};
     var serviceWorkerVersion = null;
     var scriptLoaded = false;
     function loadMainDartJs() {
@@ -95,7 +109,10 @@
     } else {
       // Service workers not supported. Just drop the <script> tag.
       loadMainDartJs();
-    }
+    }      
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
   </script>
 </body>
 </html>

@@ -145,388 +145,379 @@ class _LoginPageState extends State<LoginPage> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: SingleChildScrollView(
-          child: Container(
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 60,
-                ),
-                Image.asset(
-                  "images/shardaLogo.png",
-                  height: 100,
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20, right: 20),
-                    child: Container(
-                      width: 400,
-                      child: const Text(
-                        "Login",
-                        style: TextStyle(
-                            shadows: <Shadow>[
-                              Shadow(
-                                offset: Offset(0, 2.5),
-                                blurRadius: 3.0,
-                                color: Color.fromARGB(255, 0, 0, 0),
-                              ),
-                              Shadow(
-                                blurRadius: 8.0,
-                                color: Color.fromARGB(125, 0, 0, 255),
-                              ),
-                            ],
-                            color: Colors.white,
-                            fontSize: 45,
-                            fontWeight: FontWeight.bold),
-                      ),
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 60,
+              ),
+              Image.asset(
+                "images/shardaLogo.png",
+                height: 100,
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: Container(
+                    width: 400,
+                    child: const Text(
+                      "Login",
+                      style: TextStyle(
+                          shadows: <Shadow>[
+                            Shadow(
+                              offset: Offset(0, 2.5),
+                              blurRadius: 3.0,
+                              color: Color.fromARGB(255, 0, 0, 0),
+                            ),
+                            Shadow(
+                              blurRadius: 8.0,
+                              color: Color.fromARGB(125, 0, 0, 255),
+                            ),
+                          ],
+                          color: Colors.white,
+                          fontSize: 45,
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20, right: 20),
-                    child: Column(
-                      children: [
-                        Container(
-                          width: 400,
-                          child: const Text(
-                            "Please sign in to continue...",
-                            style: TextStyle(
-                                shadows: <Shadow>[
-                                  Shadow(
-                                    offset: Offset(0, 2.5),
-                                    blurRadius: 3.0,
-                                    color: Color.fromARGB(255, 0, 0, 0),
-                                  ),
-                                  Shadow(
-                                    blurRadius: 8.0,
-                                    color: Color.fromARGB(125, 0, 0, 255),
-                                  ),
-                                ],
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
-                          ),
+              ),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: Column(
+                    children: [
+                      Container(
+                        width: 400,
+                        child: const Text(
+                          "Please sign in to continue...",
+                          style: TextStyle(
+                              shadows: <Shadow>[
+                                Shadow(
+                                  offset: Offset(0, 2.5),
+                                  blurRadius: 3.0,
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                ),
+                                Shadow(
+                                  blurRadius: 8.0,
+                                  color: Color.fromARGB(125, 0, 0, 255),
+                                ),
+                              ],
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: Container(
+                    width: 400,
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.white.withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 10,
+                          offset:
+                              const Offset(1, 7), // changes position of shadow
                         ),
                       ],
+                      color: Colors.white,
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20),
+                          bottomRight: Radius.circular(20)),
                     ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20, right: 20),
-                    child: Container(
-                      width: 400,
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.white.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 10,
-                            offset: const Offset(
-                                1, 7), // changes position of shadow
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            height: 20,
                           ),
-                        ],
-                        color: Colors.white,
-                        borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(20),
-                            topRight: Radius.circular(20),
-                            bottomRight: Radius.circular(20)),
-                      ),
-                      child: Form(
-                        key: _formKey,
-                        child: Column(
-                          children: [
-                            const SizedBox(
-                              height: 20,
+                          Padding(
+                            padding: const EdgeInsets.only(left: 15, right: 15),
+                            child: DropdownSearch<String>(
+                              maxHeight: 240,
+                              mode: Mode.BOTTOM_SHEET,
+                              items: const [
+                                "Student",
+                                "Faculty",
+                                "Parent/Gurdian",
+                                'Admin'
+                              ],
+                              label: "I am a ....",
+                              onChanged: (value) {
+                                setState(() {
+                                  id = value;
+                                });
+                              },
                             ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 15, right: 15),
-                              child: DropdownSearch<String>(
-                                maxHeight: 240,
-                                mode: Mode.BOTTOM_SHEET,
-                                items: const [
-                                  "Student",
-                                  "Faculty",
-                                  "Parent/Gurdian",
-                                  'Admin'
-                                ],
-                                label: "I am a ....",
-                                onChanged: (value) {
-                                  setState(() {
-                                    id = value;
-                                  });
-                                },
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 30,
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.only(left: 20.0),
-                              child: Align(
-                                  alignment: Alignment.topLeft,
-                                  child: Text(
-                                    "Sharda Mail ID",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20),
-                                  )),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 15.0, right: 15.0),
-                              child: Card(
-                                  color: Colors.transparent,
-                                  shadowColor: Colors.transparent,
-                                  child: Container(
-                                      decoration: BoxDecoration(
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color:
-                                                Colors.black.withOpacity(0.5),
-                                            spreadRadius: 1.5,
-                                            blurRadius: 4,
-                                            offset: const Offset(2,
-                                                7), // changes position of shadow
-                                          ),
-                                        ],
-                                        color: Colors.white,
-                                        borderRadius: const BorderRadius.only(
-                                            topLeft: Radius.circular(20),
-                                            topRight: Radius.circular(40),
-                                            bottomRight: Radius.circular(40)),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            top: 8,
-                                            left: 0.0,
-                                            right: 25.0,
-                                            bottom: 8),
-                                        child: TextFormField(
-                                          onChanged: (value) {
-                                            email = value;
-                                          },
-                                          controller: mail,
-                                          style: const TextStyle(
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.bold),
-                                          keyboardType:
-                                              TextInputType.emailAddress,
-                                          decoration: const InputDecoration(
-                                            border: InputBorder.none,
-                                            prefixIcon: Icon(Icons.email),
-                                          ),
-                                          validator: MultiValidator([
-                                            EmailValidator(
-                                                errorText:
-                                                    "Invaild Sharda Mail ID")
-                                          ]),
-                                        ),
-                                      ))),
-                            ),
-                            const SizedBox(
-                              height: 30,
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.only(left: 20.0),
-                              child: Align(
-                                  alignment: Alignment.topLeft,
-                                  child: Text(
-                                    "Password",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20),
-                                  )),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 15.0, right: 15.0),
-                              child: Card(
-                                  color: Colors.transparent,
-                                  shadowColor: Colors.transparent,
-                                  child: Container(
-                                      decoration: BoxDecoration(
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color:
-                                                Colors.black.withOpacity(0.5),
-                                            spreadRadius: 1.5,
-                                            blurRadius: 4,
-                                            offset: const Offset(2,
-                                                7), // changes position of shadow
-                                          ),
-                                        ],
-                                        color: Colors.white,
-                                        borderRadius: const BorderRadius.only(
-                                            topLeft: Radius.circular(20),
-                                            topRight: Radius.circular(40),
-                                            bottomRight: Radius.circular(40)),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            top: 8,
-                                            left: 0.0,
-                                            right: 25.0,
-                                            bottom: 8),
-                                        child: TextFormField(
-                                          controller: password,
-                                          style: const TextStyle(
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.bold),
-                                          decoration: InputDecoration(
-                                              border: InputBorder.none,
-                                              prefixIcon:
-                                                  const Icon(Icons.lock),
-                                              suffixIcon: GestureDetector(
-                                                onTap: () {
-                                                  setState(() {
-                                                    _obsecureText =
-                                                        !_obsecureText;
-                                                  });
-                                                },
-                                                child: Icon(_obsecureText
-                                                    ? Icons.visibility
-                                                    : Icons.visibility_off),
-                                              )),
-                                          obscureText: _obsecureText,
-                                        ),
-                                      ))),
-                            ),
-                            const SizedBox(
-                              height: 50,
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                Container(
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: Container(
-                        width: 400,
-                        child: Row(
-                          children: [
-                            Align(
-                              alignment: Alignment.topLeft,
-                              child: GestureDetector(
-                                onTap: () {},
-                                child: Container(
-                                  height: 50,
-                                  width: 150,
-                                  decoration: BoxDecoration(
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.white.withOpacity(0.5),
-                                        spreadRadius: 2,
-                                        blurRadius: 10,
-                                        offset: const Offset(1, 7),
-                                      ),
-                                    ],
-                                    color: Colors.white,
-                                    borderRadius: const BorderRadius.only(
-                                        bottomLeft: Radius.circular(20),
-                                        topRight: Radius.circular(20),
-                                        bottomRight: Radius.circular(20)),
-                                  ),
-                                  child: FlatButton(
-                                    splashColor: Colors.blue.shade400,
-                                    shape: const RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.only(
-                                            bottomLeft: Radius.circular(20),
-                                            topRight: Radius.circular(20),
-                                            bottomRight: Radius.circular(20))),
-                                    onPressed: () {
-                                      setState(() {
-                                        _visible = true;
-                                      });
-                                      getData();
-                                    },
-                                    child: Row(
-                                      children: const [
-                                        SizedBox(
-                                          width: 20,
-                                        ),
-                                        Text(
-                                          "Login",
-                                          style: TextStyle(
-                                              fontSize: 25,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        Icon(
-                                          Icons.arrow_right_rounded,
-                                          size: 40,
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 60,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 10),
-                              child: TextButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                      (context),
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const MailSender()));
-                                },
-                                child: const Text(
-                                  "Forget Password",
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 20.0),
+                            child: Align(
+                                alignment: Alignment.topLeft,
+                                child: Text(
+                                  "Sharda Mail ID",
                                   style: TextStyle(
-                                      fontSize: 15,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
+                                      fontSize: 20),
+                                )),
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 15.0, right: 15.0),
+                            child: Card(
+                                color: Colors.transparent,
+                                shadowColor: Colors.transparent,
+                                child: Container(
+                                    decoration: BoxDecoration(
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black.withOpacity(0.5),
+                                          spreadRadius: 1.5,
+                                          blurRadius: 4,
+                                          offset: const Offset(2,
+                                              7), // changes position of shadow
+                                        ),
+                                      ],
+                                      color: Colors.white,
+                                      borderRadius: const BorderRadius.only(
+                                          topLeft: Radius.circular(20),
+                                          topRight: Radius.circular(40),
+                                          bottomRight: Radius.circular(40)),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 8,
+                                          left: 0.0,
+                                          right: 25.0,
+                                          bottom: 8),
+                                      child: TextFormField(
+                                        onChanged: (value) {
+                                          email = value;
+                                        },
+                                        controller: mail,
+                                        style: const TextStyle(
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.bold),
+                                        keyboardType:
+                                            TextInputType.emailAddress,
+                                        decoration: const InputDecoration(
+                                          border: InputBorder.none,
+                                          prefixIcon: Icon(Icons.email),
+                                        ),
+                                        validator: MultiValidator([
+                                          EmailValidator(
+                                              errorText:
+                                                  "Invaild Sharda Mail ID")
+                                        ]),
+                                      ),
+                                    ))),
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 20.0),
+                            child: Align(
+                                alignment: Alignment.topLeft,
+                                child: Text(
+                                  "Password",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20),
+                                )),
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 15.0, right: 15.0),
+                            child: Card(
+                                color: Colors.transparent,
+                                shadowColor: Colors.transparent,
+                                child: Container(
+                                    decoration: BoxDecoration(
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black.withOpacity(0.5),
+                                          spreadRadius: 1.5,
+                                          blurRadius: 4,
+                                          offset: const Offset(2,
+                                              7), // changes position of shadow
+                                        ),
+                                      ],
+                                      color: Colors.white,
+                                      borderRadius: const BorderRadius.only(
+                                          topLeft: Radius.circular(20),
+                                          topRight: Radius.circular(40),
+                                          bottomRight: Radius.circular(40)),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 8,
+                                          left: 0.0,
+                                          right: 25.0,
+                                          bottom: 8),
+                                      child: TextFormField(
+                                        controller: password,
+                                        style: const TextStyle(
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.bold),
+                                        decoration: InputDecoration(
+                                            border: InputBorder.none,
+                                            prefixIcon: const Icon(Icons.lock),
+                                            suffixIcon: GestureDetector(
+                                              onTap: () {
+                                                setState(() {
+                                                  _obsecureText =
+                                                      !_obsecureText;
+                                                });
+                                              },
+                                              child: Icon(_obsecureText
+                                                  ? Icons.visibility
+                                                  : Icons.visibility_off),
+                                            )),
+                                        obscureText: _obsecureText,
+                                      ),
+                                    ))),
+                          ),
+                          const SizedBox(
+                            height: 50,
+                          )
+                        ],
                       ),
                     ),
                   ),
                 ),
-                Visibility(
-                  visible: _visible,
-                  child: Tab(
-                    child: LoadingBouncingLine.circle(
-                      size: 50,
-                      backgroundColor: Colors.white,
-                    ),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: Row(
+                    children: [
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: GestureDetector(
+                          onTap: () {},
+                          child: Container(
+                            height: 50,
+                            width: 150,
+                            decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.white.withOpacity(0.5),
+                                  spreadRadius: 2,
+                                  blurRadius: 10,
+                                  offset: const Offset(1, 7),
+                                ),
+                              ],
+                              color: Colors.white,
+                              borderRadius: const BorderRadius.only(
+                                  bottomLeft: Radius.circular(20),
+                                  topRight: Radius.circular(20),
+                                  bottomRight: Radius.circular(20)),
+                            ),
+                            child: FlatButton(
+                              splashColor: Colors.blue.shade400,
+                              shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(20),
+                                      topRight: Radius.circular(20),
+                                      bottomRight: Radius.circular(20))),
+                              onPressed: () {
+                                setState(() {
+                                  _visible = true;
+                                });
+                                getData();
+                              },
+                              child: Row(
+                                children: const [
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    "Login",
+                                    style: TextStyle(
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Icon(
+                                    Icons.arrow_right_rounded,
+                                    size: 40,
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                (context),
+                                MaterialPageRoute(
+                                    builder: (context) => const MailSender()));
+                          },
+                          child: const Text(
+                            "Forget Password",
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
+                          ),
+                        ),
+                      )
+                    ],
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
-                InkWell(
-                  onTap: () {
-                    print("Help");
-                  },
-                  child: const Text(
-                    "Need Help !",
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+              Visibility(
+                visible: _visible,
+                child: Tab(
+                  child: LoadingBouncingLine.circle(
+                    size: 50,
+                    backgroundColor: Colors.white,
                   ),
-                )
-              ],
-            ),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              InkWell(
+                onTap: () {
+                  print("Help");
+                },
+                child: const Text(
+                  "Need Help !",
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold),
+                ),
+              ),
+              const SizedBox(
+                height: 30,
+              )
+            ],
           ),
         ),
       ),

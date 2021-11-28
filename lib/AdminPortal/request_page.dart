@@ -91,7 +91,7 @@ class _RequestPageState extends State<RequestPage> {
     String url02 =
         "https://guam-monoliths.000webhostapp.com/password_reset.php";
     var data = {"email": mail, "table": table};
-
+    print(mail);
     var res02 = await http.post(Uri.parse(url02), body: data);
 
     if (jsonDecode(res02.body) == "Password Reset") {
